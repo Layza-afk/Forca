@@ -8,3 +8,4 @@ contagem = 0
 def verificar():
     for i in palavras_aleatorias:
         contagem += 1
+        
