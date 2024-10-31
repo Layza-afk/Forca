@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo daa Forca</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="mensagem_feedback" name="mensagem_feedback"></div>
+
+        <div class="top">
+            <div>
+                <span id="contador">0/6</span>
+
+                <div class="duvida">
+                    <button type="button" id="info-btn">?</button>
+
+                    <div class="info-text">
+                        <!--Escrever as regras do jogo-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="titulo">
+                <h1>FORCA</h1>
+            </div>
+
+            <div id="letrero">
+                {% for i in letra_enviada %}
+                <span></span> <!--Sera posto as letras já enviadas pelo o usuario-->
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="palavra">
+            <div id="palavra-text">
+                {% for l in palavra_secreta %}
+                <span>{{ l }}</span>
+                {% endfor %}
+            </div>
+
+            <form action="{{ url_for('submit') }}" method="post">
+                <input type="text" id="letra-input" nome="letra">
+
+                <button type="submit" id="letra-btn">ENTER</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="/static/js/palavra.js"></script>
+    <script src="/static/js/letrero.js"></script>
+    <script src="/static/js/contador.js"></script>
+</body>
+</html>
