@@ -37,13 +37,17 @@
 
         <div class="palavra">
             <div id="palavra-text">
-                {% for l in palavra_secreta %}
-                <span>{{ l }}</span>
+                {% for i in palavra_secreta %}
+                    {% if i in letra_enviada %}
+                        <span>{{ i }}</span>
+                    {% else %}
+                        <span>_</span>
+                    {% endif %}
                 {% endfor %}
             </div>
 
             <form action="{{ url_for('submit') }}" method="post">
-                <input type="text" id="letra-input" nome="letra">
+                <input type="text" id="letra_input" name="letra">
 
                 <button type="submit" id="letra-btn">ENTER</button>
             </form>

@@ -13,21 +13,23 @@ def nl2br_filter(s):
 #rota da pagina
 @app.route('/')
 def inicio():
+    palavra_exibida = cf.atualizar_palavra_exibida(session.get('letra_enviada', []))
     return render_template('index.html', palavra_secreta=cf.palavra_secreta_jogo, letra_enviada=' ')
 
 #rota do btn ENTER
 @app.route('/submit', methods=['POST'])
 def submit():
     letra = request.form['letra']
-    erros = request['mensagem_feedback']
+    session['letra_enviada'] = session.get('letra_enviada', [])
 
     if letra in cf.palavra_secreta_jogo:
-        #quando acerta a letra
-        session['letras_enviadas'] = session.get('letras_enviadas', []) + [letra]
-        return redirect(url_for('index'))
-    else:
-        #mensagem para o erro
-        return render_template('index.html', erros= 'Letra incorreta')
+        session['letra_enviada'].append(letra)
+
+    # Atualiza a palavra exibida com base nas letras enviadas
+    palavra_exibida = cf.atualizar_palavra_exibida(session['letra_enviada'])
+
+    return render_template('index.html', palavra_secreta=palavra_exibida, letra_enviada=session['letra_enviada'])
+
 
 if __name__ == '__main__':
     app.run(debug=True)
