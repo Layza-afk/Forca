@@ -36,6 +36,7 @@
         </div>
 
         <div class="palavra">
+            <!--Aqui esta fazendo uma verificação se a letra ja foi encontrada ou não, evita da palavara aparecer completa ao iniciar o jogo-->
             <div id="palavra-text">
                 {% for i in palavra_secreta %}
                     {% if i in letra_enviada %}
