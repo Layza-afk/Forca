@@ -13,23 +13,31 @@ def nl2br_filter(s):
 #rota da pagina
 @app.route('/')
 def inicio():
-    palavra_exibida = cf.atualizar_palavra_exibida(session.get('letra_enviada', []))
-    return render_template('index.html', palavra_secreta=cf.palavra_secreta_jogo, letra_enviada=' ')
+    session['tentativas'] = 6
+    session['letra_input'] = []
+    return render_template('index.html', palavra_secreta=cf.palavra_secreta_jogo, letra_input=[])
 
 #rota do btn ENTER
 @app.route('/submit', methods=['POST'])
 def submit():
     letra = request.form['letra']
-    session['letra_enviada'] = session.get('letra_enviada', [])
+    session['letra_input'] = session.get('letra_input', [''])
 
-    if letra in cf.palavra_secreta_jogo:
-        session['letra_enviada'].append(letra)
+    #AHHHHHH CONSEGUI!!!!!!!!!!!! Esse if cuida de exbir as letrasjá digitadas pelo user
+    if letra not in cf.palavra_secreta_jogo or letra in cf.palavra_secreta_jogo:
+        session['letra_input'].append(letra)
+        
+    if letra not in cf.palavra_secreta_jogo:
+        session['tentativas'] -= 1
 
     # Atualiza a palavra exibida com base nas letras enviadas
-    palavra_exibida = cf.atualizar_palavra_exibida(session['letra_enviada'])
-
-    return render_template('index.html', palavra_secreta=palavra_exibida, letra_enviada=session['letra_enviada'])
-
+    palavra_exibida = cf.atualizar_palavra_exibida(session['letra_input'])
+    return render_template(
+        'index.html', 
+        palavra_secreta=palavra_exibida, 
+        letra_input=session['letra_input'],
+        tentativas=session['tentativas']
+        )
 
 if __name__ == '__main__':
     app.run(debug=True)
