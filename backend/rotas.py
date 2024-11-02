@@ -15,7 +15,14 @@ def nl2br_filter(s):
 def inicio():
     session['tentativas'] = 6
     session['letra_input'] = []
-    return render_template('index.html', palavra_secreta=cf.palavra_secreta_jogo, letra_input=[])
+
+    return render_template(
+        'index.html', 
+        palavra_secreta=cf.palavra_secreta_jogo, 
+        letra_input=[], tentativas=session['tentativas'], 
+        fim_de_jogo=False, 
+        jogo_ganho=False
+        )
 
 #rota do btn ENTER
 @app.route('/submit', methods=['POST'])
@@ -26,9 +33,26 @@ def submit():
     #AHHHHHH CONSEGUI!!!!!!!!!!!! Esse if cuida de exbir as letrasjá digitadas pelo user
     if letra not in cf.palavra_secreta_jogo or letra in cf.palavra_secreta_jogo:
         session['letra_input'].append(letra)
+    
+    todas_acertadas = all(letra in session['letra_input'] for letra in cf.palavra_secreta_jogo)
+    if todas_acertadas:
+        return render_template('index.html', 
+                               palavra_secreta=cf.palavra_secreta_jogo, 
+                               letra_input=session['letra_input'], 
+                               tentativas=0, 
+                               jogo_ganho=True
+                               )
         
     if letra not in cf.palavra_secreta_jogo:
         session['tentativas'] -= 1
+
+    if session['tentativas'] == 0:
+        return render_template('index.html', 
+                               palavra_secreta=cf.palavra_secreta_jogo, 
+                               letra_input=session['letra_input'], 
+                               tentativas=0, 
+                               fim_de_jogo=True
+                               )
 
     # Atualiza a palavra exibida com base nas letras enviadas
     palavra_exibida = cf.atualizar_palavra_exibida(session['letra_input'])
@@ -36,7 +60,9 @@ def submit():
         'index.html', 
         palavra_secreta=palavra_exibida, 
         letra_input=session['letra_input'],
-        tentativas=session['tentativas']
+        tentativas=session['tentativas'],
+        fim_de_jogo=False,
+        jogo_ganho=False
         )
 
 if __name__ == '__main__':

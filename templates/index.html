@@ -9,57 +9,63 @@
 
 <body>
     <div class="container">
-        <div id="mensagem_feedback" name="mensagem_feedback"></div>
+        {% if jogo_ganho %}
+        <!--quando ganha--->
+            <h2>Você ganhou!! Parabéns, a palavra era: {{ palavra_secreta }}</h2>
+                <form action="{{ url_for('inicio') }}" method="get">
+            <button type="submit">Reiniciar</button>
+            </form>
+            
+        {% elif fim_de_jogo %}
+        <!--gando perde-->
+            <h2>Acabou, você perdeu! A palavra era: {{ palavra_secreta }}</h2>
+            <form action="{{ url_for('inicio') }}" method="get">
+                <button type="submit">Reiniciar</button>
+            </form>
 
-        <div class="top">
-            <div>
-                <span id="tentativas">{{ tentativas }}/6</span>
-                <div class="duvida">
-                    <button type="button" id="info-btn">?</button>
+        {% else %}
+            <div id="mensagem_feedback" name="mensagem_feedback"></div>
 
-                    <div class="info-text">
-                        <p>
-                            O jogo se baseia em você encontrar a palavra que se localizam dentro dos quadros verdes antes das tentativas acabarem.<br>
+            <div class="top">
+                <div>
+                    <span id="tentativas">{{ tentativas }}/6</span>
+                    <div class="duvida">
+                        <button type="button" id="info-btn">?</button>
 
-                            Quadrados escuros representam que aquela letra já foi encontrada:<br>
-                            <img src="" alt="">
-
-                            quadrados verdes com borda representam que aquela letra ainda não foi achada:<br>
-                            <img src="" alt="">
-                        </p>
+                        <div class="info-text">
+                            <!--Escrever as regras do jogo-->
+                        </div>
                     </div>
+                </div>
+
+                <div class="titulo">
+                    <h1>FORCA</h1>
+                </div>
+
+                <div id="letrero">
+                    {% for i in letra_input %}
+                    <span>{{ i }}</span> <!-- Letras já enviadas -->
+                    {% endfor %}
                 </div>
             </div>
 
-            <div class="titulo">
-                <h1>FORCA</h1>
+            <div class="palavra">
+                <div id="palavra-text">
+                    {% for i in palavra_secreta %}
+                        {% if i in letra_input %}
+                            <span>{{ i }}</span>
+                        {% else %}
+                            <span>_</span>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <form action="{{ url_for('submit') }}" method="post" id="form-enviar">
+                    <input type="text" id="letra_input" name="letra">
+                    <button type="submit" id="letra-btn" onclick="enviar(event)">ENTER</button>
+                </form>
             </div>
-
-            <div id="letrero">
-                {% for i in letra_input %}
-                <span>{{ i }}</span> <!--Sera posto as letras já enviadas pelo o usuario-->
-                {% endfor %}
-            </div>
-        </div>
-
-        <div class="palavra">
-            <!--Aqui esta fazendo uma verificação se a letra ja foi encontrada ou não, evita da palavara aparecer completa ao iniciar o jogo-->
-            <div id="palavra-text">
-                {% for i in palavra_secreta %}
-                    {% if i in letra_input %}
-                        <span>{{ i }}</span>
-                    {% else %}
-                        <span>_</span>
-                    {% endif %}
-                {% endfor %}
-            </div>
-
-            <form action="{{ url_for('submit') }}" method="post" id="form-enviar">
-                <input type="text" id="letra_input" name="letra">
-
-                <button type="submit" id="letra-btn" onclick="enviar(event)">ENTER</button>
-            </form>
-        </div>
+        {% endif %}
     </div>
     
     <script src="/static/js/palavra.js"></script>
