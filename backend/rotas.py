@@ -47,12 +47,13 @@ def submit():
         session['tentativas'] -= 1
 
     if session['tentativas'] == 0:
-        return render_template('index.html', 
-                               palavra_secreta=cf.palavra_secreta_jogo, 
-                               letra_input=session['letra_input'], 
-                               tentativas=0, 
-                               fim_de_jogo=True
-                               )
+        return render_template(
+            'index.html', 
+            palavra_secreta=cf.palavra_secreta_jogo,
+            letra_input=session['letra_input'], 
+            tentativas=0, 
+            fim_de_jogo=True
+            )
 
     # Atualiza a palavra exibida com base nas letras enviadas
     palavra_exibida = cf.atualizar_palavra_exibida(session['letra_input'])
