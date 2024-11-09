@@ -9,63 +9,40 @@
 
 <body>
     <div class="container">
-        {% if jogo_ganho %}
-        <!--quando ganha--->
-            <h2>Você ganhou!! Parabéns, a palavra era: {{ palavra_secreta }}</h2>
-                <form action="{{ url_for('inicio') }}" method="get">
-            <button type="submit">Reiniciar</button>
-            </form>
-            
-        {% elif fim_de_jogo %}
-        <!--gando perde-->
-            <h2>Acabou, você perdeu! A palavra era: {{ palavra_secreta }}</h2>
-            <form action="{{ url_for('inicio') }}" method="get">
-                <button type="submit">Reiniciar</button>
-            </form>
+        <div id="mensagem_feedback" name="mensagem_feedback"></div>
 
-        {% else %}
-            <div id="mensagem_feedback" name="mensagem_feedback"></div>
+        <div class="top">
+            <div>
+                <span id="tentativas">0/6</span> <!--as tentativas que o user tem-->
 
-            <div class="top">
-                <div>
-                    <span id="tentativas">{{ tentativas }}/6</span>
-                    <div class="duvida">
-                        <button type="button" id="info-btn">?</button>
+                <div class="duvida">
+                    <button type="button" id="info-btn">?</button>
 
-                        <div class="info-text">
-                            <!--Escrever as regras do jogo-->
-                        </div>
+                    <div class="info-text">
+                        <!--Escrever as regras do jogo-->
                     </div>
                 </div>
-
-                <div class="titulo">
-                    <h1>FORCA</h1>
-                </div>
-
-                <div id="letrero">
-                    {% for i in letra_input %}
-                    <span>{{ i }}</span> <!-- Letras já enviadas -->
-                    {% endfor %}
-                </div>
             </div>
 
-            <div class="palavra">
-                <div id="palavra-text">
-                    {% for i in palavra_secreta %}
-                        {% if i in letra_input %}
-                            <span>{{ i }}</span>
-                        {% else %}
-                            <span>_</span>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-
-                <form action="{{ url_for('submit') }}" method="post" id="form-enviar">
-                    <input type="text" id="letra_input" name="letra">
-                    <button type="submit" id="letra-btn" onclick="enviar(event)">ENTER</button>
-                </form>
+            <div class="titulo">
+                <h1>FORCA</h1>
             </div>
-        {% endif %}
+
+            <div id="letrero">
+                <span></span> <!-- Letras já enviadas, no caso, as letras que o user digita -->
+            </div>
+        </div>
+
+        <div class="palavra">
+            <div id="palavra-text">
+                <span></span> <!--As letras da palavra secreta-->
+            </div>
+
+            <form method="post" id="form-enviar">
+                <input type="text" id="letra_input" name="letra"> <!--O local onde o user ira por a letra, seu palpite-->
+                <button type="submit" id="letra-btn" onclick="enviar(event)">ENTER</button> <!--btn para o envio do palpite-->
+            </form>
+        </div>
     </div>
 </body>
 </html>
