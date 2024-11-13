@@ -1,11 +1,153 @@
-/*simplesmente o caba não quer ler meu css*/
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: "Courier New", Courier, monospace;
 }
 
 body {
-    background: #37522D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #37522d;
+  color: #f0f0f0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  background-color: #2b3d2a;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 8px 12px;
+}
+
+.base {
+  display: flex;
+  flex-direction: row;
+}
+
+#tentativas {
+  font-size: 18px;
+  color: #f0f0f0;
+  margin-right: 8px;
+}
+
+.duvida {
+  position: relative;
+}
+
+#info-btn {
+  background-color: #1e3317;
+  padding: 3px 7px;
+  border-radius: 50%;
+  color: #f0f0f0;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.info-text {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #3a6935;
+  padding: 10px;
+  border-radius: 5px;
+  color: #f0f0f0;
+  font-size: 14px;
+}
+
+/*irei fazer uma class nova que sera puxada pelo js ao inves do hover*/
+#info-btn:hover + .info-text {
+  display: none; /*organizar isso aqui melhor, é onde vai aparecer as regras quando o user clicar*/
+}
+
+.titulo h1 {
+  font-size: 24px;
+  color: #f0f0f0;
+  padding-right: 40px;
+}
+
+#letrero {
+  padding: 8px;
+  border-radius: 8px;
+  background: #3a6935;
+  color: #263a1f;
+  text-align: center;
+}
+
+.palavra {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#palavra-text {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#palavra-text span {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
+  font-size: 24px;
+  color: #f0f0f0;
+}
+
+form {
+  margin-top: 4rem;
+  flex-direction: column;
+}
+
+#form-enviar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#letra_input {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 24px;
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
+  background-color: #37522d;
+  color: #f0f0f0;
+}
+
+#letra-btn {
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #f0f0f0;
+  background-color: #3a6935;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#letra-btn:hover {
+  background-color: #4d8c45;
 }

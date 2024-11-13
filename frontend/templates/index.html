@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jogo da Forca</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}"/>
-</head>
+    <link rel="stylesheet" href="/frontend/static/css/custom.css" />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div id="mensagem_feedback" name="mensagem_feedback"></div>
+      <div id="mensagem_feedback" name="mensagem_feedback"></div>
 
-        <div class="top">
-            <div>
-                <span id="tentativas">0/6</span> <!--as tentativas que o user tem-->
+      <div class="top">
+        <div class="base">
+          <span id="tentativas">0/6</span>
+          <!--as tentativas que o user tem-->
 
-                <div class="duvida">
-                    <button type="button" id="info-btn">?</button>
+          <div class="duvida">
+            <button type="button" id="info-btn">?</button>
 
-                    <div class="info-text">
-                        <!--Escrever as regras do jogo-->
-                    </div>
-                </div>
+            <div class="info-text">
+              <!--Escrever as regras do jogo-->
             </div>
-
-            <div class="titulo">
-                <h1>FORCA</h1>
-            </div>
-
-            <div id="letrero">
-                <span></span> <!-- Letras já enviadas, no caso, as letras que o user digita -->
-            </div>
+          </div>
         </div>
 
-        <div class="palavra">
-            <div id="palavra-text">
-                <span></span> <!--As letras da palavra secreta-->
-            </div>
-
-            <form method="post" id="form-enviar">
-                <input type="text" id="letra_input" name="letra"> <!--O local onde o user ira por a letra, seu palpite-->
-                <button type="submit" id="letra-btn" onclick="enviar(event)">ENTER</button> <!--btn para o envio do palpite-->
-            </form>
+        <div class="titulo">
+          <h1>FORCA</h1>
         </div>
+
+        <div id="letrero">
+          <span></span>
+          <!-- Letras já enviadas, no caso, as letras que o user digita -->
+        </div>
+      </div>
+
+      <div class="palavra">
+        <div id="palavra-text">
+          <span></span>
+          <!--As letras da palavra secreta-->
+        </div>
+
+        <form method="post" id="form-enviar">
+          <input type="text" id="letra_input" name="letra" />
+          <!--O local onde o user ira por a letra, seu palpite-->
+          <button type="submit" id="letra-btn" onclick="enviar(event)">
+            ENTER
+          </button>
+          <!--btn para o envio do palpite-->
+        </form>
+      </div>
     </div>
-</body>
+
+    <script src="/frontend/static/js/confi.js"></script>
+    <script src="/frontend/static/js/contador.js"></script>
+  </body>
 </html>
