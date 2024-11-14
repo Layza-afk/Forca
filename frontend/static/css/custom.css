@@ -78,17 +78,26 @@ body {
 }
 
 .titulo h1 {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  left: 47%;
   font-size: 24px;
   color: #f0f0f0;
-  padding-right: 40px;
 }
 
 #letrero {
-  padding: 8px;
-  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  padding: 4px;
+  border-radius: 4px;
   background: #3a6935;
   color: #263a1f;
   text-align: center;
+  font-size: 1rem;
+  overflow: hidden;
 }
 
 .palavra {

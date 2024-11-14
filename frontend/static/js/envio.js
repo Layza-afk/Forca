@@ -10,6 +10,7 @@ const letraArmazem = [
 ];
 
 let tentativas = 0;
+let armazemDasLetras = [];
 
 let palavraAleatoria =
   letraArmazem[Math.floor(Math.random() * letraArmazem.length)];
@@ -51,9 +52,9 @@ function contadorTentativas(letraUser) {
 
 function letreroLetras(letraUser) {
   const letrasJaEnviadas = document.getElementById("letrero");
-  let armazemDasLetras = [];
+  armazemDasLetras.push(letraUser);
 
-  letrasJaEnviadas.innerHTML = armazemDasLetras + letraUser;
+  letrasJaEnviadas.innerHTML = armazemDasLetras;
 }
 
 function onClickSubmit() {
