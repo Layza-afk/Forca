@@ -40,7 +40,7 @@ body {
   flex-direction: row;
 }
 
-#tentativas {
+.cont {
   font-size: 18px;
   color: #f0f0f0;
   margin-right: 8px;
@@ -116,12 +116,9 @@ body {
   color: #f0f0f0;
 }
 
-form {
+.envio {
   margin-top: 4rem;
   flex-direction: column;
-}
-
-#form-enviar {
   display: flex;
   align-items: center;
   gap: 10px;

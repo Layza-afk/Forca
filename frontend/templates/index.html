@@ -9,12 +9,9 @@
 
   <body>
     <div class="container">
-      <div id="mensagem_feedback" name="mensagem_feedback"></div>
-
       <div class="top">
         <div class="base">
-          <span id="tentativas">0/6</span>
-          <!--as tentativas que o user tem-->
+          <div class="cont"><span id="tentativasNum">0</span>/6</div>
 
           <div class="duvida">
             <button type="button" id="info-btn">?</button>
@@ -30,29 +27,26 @@
         </div>
 
         <div id="letrero">
-          <span></span>
           <!-- Letras já enviadas, no caso, as letras que o user digita -->
         </div>
       </div>
 
       <div class="palavra">
         <div id="palavra-text">
-          <span></span>
           <!--As letras da palavra secreta-->
         </div>
 
-        <form method="post" id="form-enviar">
+        <div class="envio">
           <input type="text" id="letra_input" name="letra" />
           <!--O local onde o user ira por a letra, seu palpite-->
-          <button type="submit" id="letra-btn" onclick="enviar(event)">
+          <button type="submit" id="letra-btn" onclick="onClickSubmit()">
             ENTER
           </button>
           <!--btn para o envio do palpite-->
-        </form>
+        </div>
       </div>
     </div>
 
-    <script src="/frontend/static/js/confi.js"></script>
-    <script src="/frontend/static/js/contador.js"></script>
+    <script src="/frontend/static/js/envio.js"></script>
   </body>
 </html>
