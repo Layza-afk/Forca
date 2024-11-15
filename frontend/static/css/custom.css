@@ -63,14 +63,18 @@ body {
 .info-text {
   display: none;
   position: absolute;
-  top: 100%;
-  left: 2;
-  background-color: #3a6935;
+  top: 155%;
+  left: -3.5rem;
+  background-color: #356230;
   padding: 10px;
   border-radius: 5px;
-  width: 15rem;
+  width: 19rem;
   color: #f0f0f0;
   font-size: 12px;
+}
+
+.info-text p {
+  margin: 8px 0;
 }
 
 .titulo h1 {
