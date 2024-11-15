@@ -10,7 +10,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  margin-top: 5rem;
   background: #37522d;
   color: #f0f0f0;
 }
@@ -64,17 +64,13 @@ body {
   display: none;
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 2;
   background-color: #3a6935;
   padding: 10px;
   border-radius: 5px;
+  width: 15rem;
   color: #f0f0f0;
-  font-size: 14px;
-}
-
-/*irei fazer uma class nova que sera puxada pelo js ao inves do hover*/
-#info-btn:hover + .info-text {
-  display: none; /*organizar isso aqui melhor, é onde vai aparecer as regras quando o user clicar*/
+  font-size: 12px;
 }
 
 .titulo h1 {
