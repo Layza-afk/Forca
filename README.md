@@ -1,6 +1,6 @@
 # Jogo da Forca
 
-linguagens: Html, css, jinja2 e Python.
+linguagens: Html, css e js.
 biblioteca: Flask
 
 proposta: Um joguinha que recebe letras enviadas pelo usuario e as compara com a palavra que deve ser encontrada pelo usuario.
