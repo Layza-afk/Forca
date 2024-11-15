@@ -1,11 +1,6 @@
 # Jogo da Forca
 
-<<<<<<< Updated upstream
 linguagens: Html, css e js.
-biblioteca: Flask
-=======
-linguagens: Html, css, jinja2 e Python.
->>>>>>> Stashed changes
 
 proposta: Um joguinha que recebe letras enviadas pelo usuario e as compara com a palavra que deve ser encontrada pelo usuario.
 
